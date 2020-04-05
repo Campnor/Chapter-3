@@ -1,7 +1,20 @@
 package com.example.chapter3.homework;
 
+import android.annotation.SuppressLint;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.airbnb.lottie.LottieAnimationView;
 
 /**
  * 使用 ViewPager 和 Fragment 做一个简单版的好友列表界面
@@ -11,17 +24,50 @@ import android.os.Bundle;
  */
 public class Ch3Ex3Activity extends AppCompatActivity {
 
+    public LottieAnimationView animationView;
+    private static final int PAGE_COUNT = 2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ch3ex3);
 
+        animationView = findViewById(R.id.animation_view);
 
+        ViewPager pager = findViewById(R.id.view_pager);
+        TabLayout tabLayout = findViewById(R.id.tab_layout);
+        pager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
+            @Override
+            public Fragment getItem(int i) {
+                PlaceholderFragment pf = new PlaceholderFragment();
+                Bundle args = new Bundle();
+                args.putInt("abc",animationView);
+                return new PlaceholderFragment();
+
+            }
+
+            @Override
+            public int getCount() {
+                return PAGE_COUNT;
+            }
+
+
+            @Override
+            public CharSequence getPageTitle(int position) {
+                if (position == 1)
+                    return "好友列表";
+                else
+                    return "我的好友";
+            }
+        });
+        tabLayout.setupWithViewPager(pager);
 
         // TODO: ex3-1. 添加 ViewPager 和 Fragment 做可滑动界面
 
 
 
         // TODO: ex3-2, 添加 TabLayout 支持 Tab
+
     }
+
 }
+

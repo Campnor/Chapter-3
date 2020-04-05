@@ -7,6 +7,16 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.CompoundButton;
+import android.widget.SeekBar;
+
+import com.airbnb.lottie.LottieAnimationView;
 
 public class PlaceholderFragment extends Fragment {
 
@@ -27,6 +37,9 @@ public class PlaceholderFragment extends Fragment {
             public void run() {
                 // 这里会在 5s 后执行
                 // TODO ex3-4：实现动画，将 lottie 控件淡出，列表数据淡入
+                animationView.pauseAnimation();
+
+
             }
         }, 5000);
     }
