@@ -24,25 +24,19 @@ import com.airbnb.lottie.LottieAnimationView;
  */
 public class Ch3Ex3Activity extends AppCompatActivity {
 
-    public LottieAnimationView animationView;
+
     private static final int PAGE_COUNT = 2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ch3ex3);
 
-        animationView = findViewById(R.id.animation_view);
-
         ViewPager pager = findViewById(R.id.view_pager);
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         pager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int i) {
-                PlaceholderFragment pf = new PlaceholderFragment();
-                Bundle args = new Bundle();
-                args.putInt("abc",animationView);
                 return new PlaceholderFragment();
-
             }
 
             @Override
